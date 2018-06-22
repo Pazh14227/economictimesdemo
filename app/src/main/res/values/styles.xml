@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/blue</item>
+
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+
+        <item name="android:animateOnClick">true</item>
+    </style>
+
+    <style name="Activitytheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTitleSize">@dimen/window_title_size</item>
+        <item name="android:windowTitleStyle">@style/CustomWindowTitle</item>
+        <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBackground</item>
+        <item name="android:windowNoTitle">false</item>
+
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <style name="CustomWindowTitleBackground">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomWindowTitle">
+
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomActionBar">
+
+        <item name="android:background">@color/primaryDark</item>
+
+    </style>
+
+
+
+
+</resources>

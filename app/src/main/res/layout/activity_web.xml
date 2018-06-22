@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--tools:context=".web_view.WebActivity"--><!--android:orientation="vertical">-->
+
+<!--<include layout="@layout/custom_toolbar"--><!--android:id="@+id/webView_toolbar"/>-->
+
+<!--<ProgressBar--><!--android:layout_width="match_parent"--><!--android:layout_height="4dp"--><!--style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"--><!--android:progress="0"--><!--android:id="@+id/web_loading"--><!--android:visibility="visible"/>-->
+
+<!--<WebView--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:id="@+id/web_view" />-->
+
+<!--</LinearLayout>-->
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:id="@+id/web_linear">
+
+            <include layout="@layout/custom_toolbar" android:id="@+id/web_toolbar" />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:progress="0"
+            android:background="@color/colorPrimaryDark"
+            android:id="@+id/web_loading"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:visibility="visible" />
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="fill_vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

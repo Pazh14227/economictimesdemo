@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.malai_pt1882.economictimesdemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme">
+        </activity>
+
+
+        <activity android:name=".launch_screen.SplashActivity"
+            android:theme="@style/Activitytheme">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+
+            </intent-filter>
+
+        </activity>
+
+
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name=".detailednews.DetailedNews"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name=".web_view.WebActivity"
+            android:parentActivityName=".detailednews.DetailedNews"
+            android:theme="@style/AppTheme"/>
+    </application>
+
+</manifest>

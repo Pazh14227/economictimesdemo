@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/NavigationHeader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
+    android:orientation="vertical"
+    style="@style/Widget.Design.NavigationView"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="@string/navigation_header_text"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"
+        android:layout_gravity="center_vertical"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:fontFamily="@font/robotoregular"
+        android:layout_marginStart="16dp"
+        android:text="Welcome guest" />
+
+</LinearLayout>
