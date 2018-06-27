@@ -1,7 +1,6 @@
-package com.example.malai_pt1882.economictimesdemo.Loaders;
+package com.example.malai_pt1882.economictimesdemo.loaders;
 
-import com.example.malai_pt1882.economictimesdemo.APIContract;
-import com.example.malai_pt1882.economictimesdemo.TabsRecyclerAdapter;
+import com.example.malai_pt1882.economictimesdemo.TabAdapter;
 import com.example.malai_pt1882.economictimesdemo.tabs.Tab;
 import com.example.malai_pt1882.economictimesdemo.tabs.TabComponents;
 
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 
 public class TabLoader extends TabComponents implements LoaderManager.LoaderCallbacks<ArrayList<Bundle>> {
 
-    private TabsRecyclerAdapter tabsRecyclerAdapter;
+    private TabAdapter tabAdapter;
     private static final int NEWS_LOADER = 0;
     private static final int DATABASE_LOADER = 1;
     private final LoaderManager loaderManager;
@@ -32,14 +31,16 @@ public class TabLoader extends TabComponents implements LoaderManager.LoaderCall
      * @param context Context of the fragment to create a recycler view and to display status on toasts
      */
     public TabLoader(Tab tab, Context context, LoaderManager loaderManager, ProgressBar progressBar) {
+
         super(tab, context);
+
         this.loaderManager = loaderManager;
-        tabsRecyclerAdapter = new TabsRecyclerAdapter(null,context);
+        tabAdapter = new TabAdapter(null, context);
         this.progressBar = progressBar;
     }
 
-    @Override
     public String getJsonUrl() {
+
         switch (getTab()) {
             case NEWS:
                 return APIContract.NEWS_URL;
@@ -55,6 +56,7 @@ public class TabLoader extends TabComponents implements LoaderManager.LoaderCall
                 return APIContract.MARKET_URL;
             case QUICK_READS:
                 return APIContract.QUICK_READS_URL;
+
             default:
                 return null;
         }
@@ -63,11 +65,11 @@ public class TabLoader extends TabComponents implements LoaderManager.LoaderCall
     /**
      * Initially this method returns the recyclerAdapter instance with cursor object passed as null. Later it is replaced by onLoadFinished method.
      *
-     * @return Recycler Adapter for fragment.
+     * @return Recycler Adapter for recycler view.
      */
     @Override
-    public TabsRecyclerAdapter getRecyclerAdapter() {
-        return tabsRecyclerAdapter;
+    public TabAdapter getRecyclerAdapter() {
+        return tabAdapter;
     }
 
     @NonNull
@@ -77,7 +79,7 @@ public class TabLoader extends TabComponents implements LoaderManager.LoaderCall
             case NEWS_LOADER:
                 return new NewsLoader(this);
             case DATABASE_LOADER:
-                return new DatabaseLoader(this);
+                return new ContentLoader(this);
             default:
                 return new NewsLoader(this);
         }
@@ -87,38 +89,33 @@ public class TabLoader extends TabComponents implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(@NonNull Loader<ArrayList<Bundle>> loader, ArrayList<Bundle> data) {
 
-        if(data!=null && data.size()>0){
-            if(progressBar!=null && progressBar.isShown())
-            progressBar.setVisibility(View.GONE);
+        if (data != null && data.size() > 0) {
+            if (progressBar != null && progressBar.isShown())
+                progressBar.setVisibility(View.GONE);
         }
 
-        if(loader.getId() == DATABASE_LOADER){
-            loaderManager.initLoader(NEWS_LOADER,null,this).forceLoad();
+        if (loader.getId() == DATABASE_LOADER) {
+            loaderManager.initLoader(NEWS_LOADER, null, this).forceLoad();
         }
 
-
-        tabsRecyclerAdapter.swapCursor(data);
+        tabAdapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<ArrayList<Bundle>> loader) {
-        tabsRecyclerAdapter.swapCursor(null);
+        tabAdapter.swapCursor(null);
     }
 
     public void startLoading() {
         loaderManager.initLoader(DATABASE_LOADER, null, this).forceLoad();
     }
 
-    public void destroyLoaders(){
-        if(loaderManager.hasRunningLoaders()) {
+    public void destroyLoaders() {
+        if (loaderManager.hasRunningLoaders()) {
 
             loaderManager.destroyLoader(DATABASE_LOADER);
             loaderManager.destroyLoader(NEWS_LOADER);
-
-
-
         }
-//        tabsRecyclerAdapter.dequeTask();
 
     }
 }

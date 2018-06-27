@@ -1,4 +1,4 @@
-package com.example.malai_pt1882.economictimesdemo.Loaders;
+package com.example.malai_pt1882.economictimesdemo.loaders;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -9,9 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
-import com.example.malai_pt1882.economictimesdemo.APIContract;
-import com.example.malai_pt1882.economictimesdemo.Database.DatabaseContract;
-import com.example.malai_pt1882.economictimesdemo.Database.NewsDatabase;
+import com.example.malai_pt1882.economictimesdemo.database.DatabaseContract;
+import com.example.malai_pt1882.economictimesdemo.database.NewsDatabase;
 import com.example.malai_pt1882.economictimesdemo.MainActivity;
 import com.example.malai_pt1882.economictimesdemo.tabs.Tab;
 import com.example.malai_pt1882.economictimesdemo.tabs.TabsManager;
@@ -31,7 +30,7 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class NewsLoader extends AsyncTaskLoader<ArrayList<Bundle>> {
+class NewsLoader extends AsyncTaskLoader<ArrayList<Bundle>> {
 
     private final String jsonUrl;
     private final TabsManager tabsManager;
@@ -95,7 +94,7 @@ public class NewsLoader extends AsyncTaskLoader<ArrayList<Bundle>> {
         return null;
     }
 
-    public static class JSONParser {
+    private static class JSONParser {
         String[] sourceName;
         String[] authourName;
         public String[] title;
@@ -221,12 +220,6 @@ public class NewsLoader extends AsyncTaskLoader<ArrayList<Bundle>> {
             Cursor allRecords = sqLiteDatabase.query(DatabaseContract.NEWS_TABLE, null, allRecordsSelection, null, null, null, tabColumnName);
             Cursor cursor = sqLiteDatabase.query(DatabaseContract.NEWS_TABLE, new String[]{tabColumnName, DatabaseContract.URL_COLUMN}, selection, selectionArgs, null, null, null);
 
-            String[] columns = allRecords.getColumnNames();
-            int i=0;
-            while(i<columns.length){
-                Log.d("Column Name is",columns[i]);
-                i++;
-            }
             Log.d("Json parser url is ", jsonParser.url[pos]);
 
             if (cursor.getCount() == 0) {

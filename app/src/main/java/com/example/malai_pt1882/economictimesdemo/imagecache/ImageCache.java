@@ -1,29 +1,35 @@
 package com.example.malai_pt1882.economictimesdemo;
 
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.util.LruCache;
 
 public class ImageCaching {
 
-    private static ImageCaching instance;
+    private static ImageCaching instance = null;
+
+    private LruCache<String, Bitmap> bitmapCache;
 
 
     /**
      * Private constructor is created because only one instance of the method should be used
      */
-    private ImageCaching(){
+    private ImageCaching(int memory) {
+
+        bitmapCache = new LruCache<>(memory);
 
     }
 
-    public static ImageCaching getINSTANCE() {
+    public static void createInstance(int memory) {
+
         if (instance == null) {
-        instance = new ImageCaching();
+            instance = new ImageCaching(memory);
+        }
+
     }
+
+    public static ImageCaching getInstance() {
         return instance;
     }
-
-    private LruCache<String, Bitmap> bitmapCache = new LruCache<>(1000);
 
     public void addBitmap(String url, Bitmap bitmap) {
         bitmapCache.put(url, bitmap);

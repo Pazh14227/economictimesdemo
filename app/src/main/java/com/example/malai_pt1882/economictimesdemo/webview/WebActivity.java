@@ -1,22 +1,18 @@
 package com.example.malai_pt1882.economictimesdemo.web_view;
 
 import android.content.Intent;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.example.malai_pt1882.economictimesdemo.R;
-import com.example.malai_pt1882.economictimesdemo.ToolbarPreferences;
+import com.example.malai_pt1882.economictimesdemo.ToolbarPref.ToolbarPreferences;
 
 public class WebActivity extends AppCompatActivity {
 

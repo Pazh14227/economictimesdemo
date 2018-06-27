@@ -1,16 +1,13 @@
 package com.example.malai_pt1882.economictimesdemo;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.example.malai_pt1882.economictimesdemo.toolbarpref.ToolbarPreferences;
 
 public class SettingsActivity extends AppCompatActivity {
 
